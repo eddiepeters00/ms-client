@@ -1,18 +1,11 @@
-import RegisterForm from "./components/forms/Register-form";
-import SigninForm from "./components/forms/Signin-form";
+import Link from "next/link";
 
 export default function Page() {
   return (
     <main className="grid">
-      <div className="grid place-content-center">
-        <h3>Sign in</h3>
-        <SigninForm />
-      </div>
-
-      <div className="grid place-content-center mt-20">
-        <h3>Register</h3>
-        <RegisterForm />
-      </div>
+      <p>Welcome to my website</p>
+      <Link href="/register">Register</Link>
+      <Link href="/signin">Sign in</Link>
     </main>
   );
 }

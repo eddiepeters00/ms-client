@@ -1,13 +1,10 @@
-import Layout from "@/components/layout";
 import { cookies } from "next/headers";
+import SigninForm from "../../components/forms/Signin-form";
 import { redirect } from "next/navigation";
 
 export default function Page() {
   const token = cookies().get("token");
-  if (!token) redirect("/");
-  return (
-    <Layout>
-      <p>Welcome to dashboard</p>
-    </Layout>
-  );
+  if (token) redirect("/dashboard");
+
+  return <SigninForm />;
 }
