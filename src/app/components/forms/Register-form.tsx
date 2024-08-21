@@ -18,55 +18,26 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 export default function RegisterForm() {
-  const formSchema = z
-    .object({
-      username: z
-        .string()
-        .min(4)
-        .max(20)
-        .trim(),
-      email: z
-        .string()
-        .email()
-        .trim(),
-      password: z
-        .string()
-        .min(8)
-        .trim(),
-    })
-    .superRefine(({ password }, checkPassComplexity) => {
-      const containsUppercase = (ch: string) => /[A-Z]/.test(ch);
-      const containsLowercase = (ch: string) => /[a-z]/.test(ch);
-      const containsSpecialChar = (ch: string) =>
-        /[`!@#$%^&*()_\-+=\[\]{};':"\\|,.<>\/?~ ]/.test(ch);
-
-      let countOfUpperCase = 0,
-        countOfLowerCase = 0,
-        countOfNumbers = 0,
-        countOfSpecialChar = 0;
-      for (let i = 0; i < password.length; i++) {
-        let ch = password.charAt(i);
-        if (!isNaN(+ch)) countOfNumbers++;
-        else if (containsUppercase(ch)) countOfUpperCase++;
-        else if (containsLowercase(ch)) countOfLowerCase++;
-        else if (containsSpecialChar(ch)) countOfSpecialChar++;
-      }
-      if (
-        countOfLowerCase < 1 ||
-        countOfUpperCase < 1 ||
-        countOfSpecialChar < 1 ||
-        countOfNumbers < 1
-      ) {
-        checkPassComplexity.addIssue({
-          code: "custom",
-          message: "password does not meet complexity requirements",
-        });
-      }
-    });
+  const formSchema = z.object({
+    username: z
+      .string()
+      .min(4)
+      .max(20)
+      .trim(),
+    email: z
+      .string()
+      .email()
+      .trim(),
+    password: z
+      .string()
+      .min(8)
+      .trim(),
+  });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      username: "",
       email: "",
       password: "",
     },
@@ -77,13 +48,13 @@ export default function RegisterForm() {
     let success = false;
     try {
       const res = await fetchData({
-        path: "http://127.0.0.1:3005/api/v1/services/register",
-        method: "POST",
+        path: "http://127.0.0.1:3005/api/v1/services/registration",
+        method: "post",
         data: values,
         cache: "no-store",
       });
 
-      console.log(res);
+      console.log("Fetched data: ", res);
       if (res.error) {
         throw res.data;
       } else {

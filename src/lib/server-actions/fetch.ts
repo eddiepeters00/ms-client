@@ -1,6 +1,6 @@
 "use server";
 
-type Methods = "PUT" | "POST" | "GET" | "DELETE" | "PATCH";
+type Methods = "put" | "post" | "get" | "delete" | "patch";
 export default async function fetchData({
   path,
   headers,

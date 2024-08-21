@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers";
 
-export default function setSessionCookie({
+export default async function setSessionCookie({
   data,
 }: {
   data: { token: string; email: string; username: string };

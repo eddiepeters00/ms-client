@@ -1,7 +1,7 @@
 export default function Page() {
   return (
     <main>
-      <p>Signed in</p>
+      <p className="text-red-600">You are signed in!</p>
     </main>
   );
 }

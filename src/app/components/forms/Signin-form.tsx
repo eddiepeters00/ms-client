@@ -19,14 +19,14 @@ import fetchData from "@/lib/server-actions/fetch";
 
 export default function SigninForm() {
   const formSchema = z.object({
-    email: z.string().email(),
+    username: z.string(),
     password: z.string().min(8),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
+      username: "",
       password: "",
     },
   });
@@ -37,7 +37,7 @@ export default function SigninForm() {
     try {
       const res = await fetchData({
         path: "http://127.0.0.1:3005/api/v1/services/auth",
-        method: "POST",
+        method: "post",
         data: values,
         cache: "no-store",
       });
@@ -62,12 +62,12 @@ export default function SigninForm() {
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <FormField
           control={form.control}
-          name="email"
+          name="username"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>Username</FormLabel>
               <FormControl>
-                <Input placeholder="Email" {...field} />
+                <Input placeholder="Username" {...field} />
               </FormControl>
 
               <FormMessage />
@@ -76,7 +76,7 @@ export default function SigninForm() {
         />
         <FormField
           control={form.control}
-          name="email"
+          name="password"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Password</FormLabel>
