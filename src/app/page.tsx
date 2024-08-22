@@ -1,11 +1,11 @@
-import Link from "next/link";
+import Hero from "@/components/hero/Hero";
 
 export default function Page() {
   return (
-    <main className="grid">
-      <p>Welcome to my website</p>
-      <Link href="/register">Register</Link>
-      <Link href="/signin">Sign in</Link>
+    <main className="grid bg-red-100">
+      <section id="top" className="h-[calc(100dvh-5rem)]">
+        <Hero />
+      </section>
     </main>
   );
 }
