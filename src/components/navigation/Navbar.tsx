@@ -5,17 +5,17 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <nav className="sticky flex w-full items-center justify-between px-8 h-[5rem]">
-      <Image className="" alt="HealthyCravings" src="" />
-      <div className="flex gap-10 mx-10">
+    <nav className="sticky flex w-full items-center justify-between h-[5rem]">
+      <Image className="w-[20%]" alt="HealthyCravings" src="" />
+      <div className="flex items-center gap-2">
         <Link
-          className="bg-green-600 text-white font-bold py-2 px-4 rounded-2xl"
+          className="bg-green-600 text-white text-nowrap font-bold rounded-2xl px-2 py-1"
           href="signin"
         >
           Log in
         </Link>
         <Link
-          className="text-black font-bold p-2 px-4 rounded-2xl"
+          className="text-black text-nowrap font-bold rounded-2xl px-2 py-1"
           href="register"
         >
           Sign up
