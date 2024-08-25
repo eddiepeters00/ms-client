@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence, stagger } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 type RollingTextType = {
   id: number;
@@ -73,13 +73,22 @@ const RollingText = () => {
   const currentText = rollingText[currentIndex];
 
   const variants = {
-    hidden: { y: "100%", opacity: 0 },
-    visible: { y: "0%", opacity: 1 },
-    exit: { y: "-50%", opacity: 0 },
+    hidden: { opacity: 0, y: "100%" },
+    visible: { opacity: 1, y: "0%" },
+    exit: {
+      opacity: 0,
+      y: "-100%",
+      transition: {
+        duration: 1,
+        staggerDirection: -1,
+        staggerChildren: 0.3,
+        ease: "easeInOut",
+      },
+    },
   };
 
   return (
-    <div className="relative">
+    <div className="relative h-full w-full">
       {/**Text animation */}
       <AnimatePresence initial={false} mode="wait">
         <motion.h3
@@ -96,27 +105,32 @@ const RollingText = () => {
         </motion.h3>
       </AnimatePresence>
 
-      <section className="grid grid-flow-col mt-[25%] text-sm gap-10">
-        {/**Image animation */}
-        <AnimatePresence initial={false} mode="wait">
+      {/**Image animation */}
+      <AnimatePresence initial={false} mode="wait">
+        <motion.div
+          key={currentText.id}
+          variants={variants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          transition={{
+            duration: 2,
+            ease: "easeInOut",
+            staggerChildren: 0.3,
+          }}
+          className="absolute grid grid-flow-col gap-10 mt-[35%]"
+        >
           {currentText.images.map((item, index) => (
             <motion.img
               key={`${currentIndex}-${index}`}
-              variants={variants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              transition={{
-                duration: 1,
-                ease: "easeInOut",
-              }}
               src={item.src}
               alt={item.alt}
-              className="max-w-full h-full relative"
+              className="max-w-full h-full"
+              variants={variants}
             />
           ))}
-        </AnimatePresence>
-      </section>
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 };
