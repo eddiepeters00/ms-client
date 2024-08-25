@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <nav className="sticky flex w-full items-center justify-between h-[5rem]">
+    <nav className="sticky top-0 bg-white flex w-full items-center justify-between h-[5rem]">
       <Image className="w-[20%]" alt="HealthyCravings" src="" />
       <div className="flex items-center gap-2">
         <Link
