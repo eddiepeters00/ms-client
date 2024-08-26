@@ -118,14 +118,14 @@ const RollingText = () => {
             ease: "easeInOut",
             staggerChildren: 0.3,
           }}
-          className="absolute grid grid-flow-col gap-10 mt-[35%]"
+          className="absolute grid grid-flow-col gap-20 px-20 -z-50 bottom-[20%] sm:bottom-[50%] max-h-[20vh]"
         >
           {currentText.images.map((item, index) => (
             <motion.img
               key={`${currentIndex}-${index}`}
               src={item.src}
               alt={item.alt}
-              className="max-w-full h-full"
+              className="max-w-full h-full object-cover"
               variants={variants}
             />
           ))}
