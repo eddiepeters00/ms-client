@@ -118,7 +118,7 @@ const RollingText = () => {
             ease: "easeInOut",
             staggerChildren: 0.3,
           }}
-          className="absolute grid grid-flow-col gap-20 px-20 -z-50 bottom-[20%] sm:bottom-[50%] max-h-[20vh]"
+          className="absolute grid grid-flow-col gap-5 mx-5 -z-50 bottom-[20%] sm:bottom-[50%] max-h-[20vh]"
         >
           {currentText.images.map((item, index) => (
             <motion.img

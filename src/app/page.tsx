@@ -1,4 +1,5 @@
 import Hero from "@/components/hero/Hero";
+import Search from "@/components/sections/search";
 
 export default function Page() {
   return (
@@ -14,7 +15,9 @@ export default function Page() {
         <section
           id="search"
           className="snap-always snap-center h-[calc(100vh-5rem)] bg-[#fffd92]"
-        ></section>
+        >
+          <Search />
+        </section>
         <section
           id="save"
           className="snap-always snap-center h-[calc(100vh-5rem)] bg-[#ccf6ee]"
