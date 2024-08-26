@@ -1,5 +1,8 @@
 import Hero from "@/components/hero/Hero";
-import Search from "@/components/sections/search";
+import Bottom from "@/components/sections/Bottom";
+import Save from "@/components/sections/Save";
+import Search from "@/components/sections/Search";
+import Shop from "@/components/sections/Shop";
 
 export default function Page() {
   return (
@@ -21,15 +24,21 @@ export default function Page() {
         <section
           id="save"
           className="snap-always snap-center h-[calc(100vh-5rem)] bg-[#ccf6ee]"
-        ></section>
+        >
+          <Save />
+        </section>
         <section
           id="shop"
           className="snap-always snap-center h-[calc(100vh-5rem)] bg-red-50"
-        ></section>
+        >
+          <Shop />
+        </section>
         <section
           id="bottom"
           className="snap-always snap-center h-[calc(100vh-5rem)] bg-green-800"
-        ></section>
+        >
+          <Bottom />
+        </section>
       </main>
     </>
   );

@@ -12,12 +12,12 @@ export default function Search() {
             What do you want to try next? Think of something you&apos;re into -
             like <q>Easy fresh sallad</q> - and see what you find.
           </p>
-          <Button className="font-bold rounded-3xl text-white bg-pink-600">
+          <Button className="w-32 font-bold rounded-3xl text-white bg-pink-600">
             Explore
           </Button>
         </div>
         <Image
-          className="md:h-full md:w-[50vw] h-[100vw] md:-rotate-0 md:object-cover rotate-90 object-contain shadow-md"
+          className="object-contain md:h-full md:w-[50vw] md:object-cover md:shadow-md"
           width="500"
           height="200"
           src="/food_platter.jpg"
