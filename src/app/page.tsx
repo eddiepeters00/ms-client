@@ -11,31 +11,31 @@ export default function Page() {
       <main className="grid h-[calc(100vh-7rem)] snap-y snap-mandatory overflow-y-scroll no-scrollbar">
         <section
           id="top"
-          className="snap-always snap-center h-[calc(100vh-5rem)]"
+          className="snap-always snap-center h-[calc(100vh-7rem)]"
         >
           <Hero />
         </section>
         <section
           id="search"
-          className="snap-always snap-center h-[calc(100vh-5rem)] bg-[#fffd92]"
+          className="snap-always snap-center h-[calc(100vh-7rem)] bg-[#fffd92]"
         >
           <Search />
         </section>
         <section
           id="save"
-          className="snap-always snap-center h-[calc(100vh-5rem)] bg-[#ccf6ee]"
+          className="snap-always snap-center h-[calc(100vh-7rem)] bg-[#ccf6ee]"
         >
           <Save />
         </section>
         <section
           id="shop"
-          className="snap-always snap-center h-[calc(100vh-5rem)] bg-red-50"
+          className="snap-always snap-center h-[calc(100vh-7rem)] bg-red-50"
         >
           <Shop />
         </section>
         <section
           id="bottom"
-          className="snap-always snap-center h-[calc(100vh-5rem)] bg-green-800"
+          className="snap-always snap-center h-[calc(100vh-7rem)] bg-green-800"
         >
           <Bottom />
         </section>
