@@ -5,24 +5,27 @@ export default function Page() {
     <>
       {/** Navbar + Footer = 7rem*/}
       <main className="grid h-[calc(100vh-7rem)] snap-y snap-mandatory overflow-y-scroll no-scrollbar">
-        <section id="top" className="snap-start h-[calc(100vh-5rem)]">
+        <section
+          id="top"
+          className="snap-always snap-center h-[calc(100vh-5rem)]"
+        >
           <Hero />
         </section>
         <section
           id="search"
-          className="snap-start h-[calc(100vh-5rem)] bg-[#fffd92]"
+          className="snap-always snap-center h-[calc(100vh-5rem)] bg-[#fffd92]"
         ></section>
         <section
           id="save"
-          className="snap-start h-[calc(100vh-5rem)] bg-[#ccf6ee]"
+          className="snap-always snap-center h-[calc(100vh-5rem)] bg-[#ccf6ee]"
         ></section>
         <section
           id="shop"
-          className="snap-start h-[calc(100vh-5rem)] bg-red-50"
+          className="snap-always snap-center h-[calc(100vh-5rem)] bg-red-50"
         ></section>
         <section
           id="bottom"
-          className="snap-start h-[calc(100vh-5rem)] bg-green-800"
+          className="snap-always snap-center h-[calc(100vh-5rem)] bg-green-800"
         ></section>
       </main>
     </>
