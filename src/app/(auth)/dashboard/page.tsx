@@ -7,7 +7,7 @@ export default function Page() {
   if (!token) redirect("/");
   return (
     <Layout>
-      <p>Welcome to dashboard</p>
+      <p>Welcome to dashboard, you are now authenticated and signed in</p>
     </Layout>
   );
 }
