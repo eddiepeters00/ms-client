@@ -17,7 +17,7 @@ export default function Search() {
           </Button>
         </div>
         <Image
-          className="object-contain md:h-full md:w-[50vw] md:object-cover md:shadow-md"
+          className="object-contain w-full md:h-full md:w-[50vw] md:object-cover md:shadow-md"
           width="500"
           height="200"
           src="/food_platter.jpg"

@@ -70,7 +70,7 @@ export default function RegisterForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
         <FormField
           control={form.control}
           name="username"
@@ -113,7 +113,9 @@ export default function RegisterForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Register</Button>
+        <Button className="mt-10 bg-green-600 text-white" type="submit">
+          Sign up
+        </Button>
       </form>
     </Form>
   );

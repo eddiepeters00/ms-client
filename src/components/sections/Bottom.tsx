@@ -5,9 +5,9 @@ import SigninAndRegisterCard from "../forms/SigninAndRegisterCard";
 export default function Bottom() {
   return (
     <>
-      <div className="grid items-center justify-between h-full md:grid-cols-2">
-        <div className="max-w-[500px] grid m-10 gap-6 text-orange-400">
-          <h3 className="font-bold text-3xl">
+      <div className="grid place-content-center h-full md:grid-cols-2">
+        <div className="max-w-[500px] place-self-center text-orange-400">
+          <h3 className="font-bold px-10 pt-5 text-xl md:text-4xl">
             Sign up and find your next favorites
           </h3>
         </div>

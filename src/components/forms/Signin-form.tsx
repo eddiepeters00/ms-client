@@ -59,7 +59,7 @@ export default function SigninForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
         <FormField
           control={form.control}
           name="username"
@@ -88,7 +88,9 @@ export default function SigninForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Sign in</Button>
+        <Button className="mt-10 bg-green-600 text-white" type="submit">
+          Log in
+        </Button>
       </form>
     </Form>
   );
