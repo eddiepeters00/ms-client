@@ -6,7 +6,7 @@ import Layout from "@/components/layout";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Authentication service",
+  title: "HealthyCravings",
   description: "Microservice application for registration and signing in",
 };
 

@@ -1,6 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import SigninForm from "../forms/Signin-form";
+import SigninAndRegisterCard from "../forms/SigninAndRegisterCard";
 
 export default function Navbar() {
   return (
@@ -9,18 +19,23 @@ export default function Navbar() {
         HealthyCravings
       </Link>
       <div className="flex items-center gap-2">
-        <Link
-          className="bg-green-600 text-white text-nowrap font-bold rounded-2xl px-2 py-1"
-          href="signin"
-        >
-          Log in
-        </Link>
-        <Link
-          className="text-black text-nowrap font-bold rounded-2xl px-2 py-1"
-          href="register"
-        >
-          Sign up
-        </Link>
+        <Dialog>
+          <DialogTrigger className="bg-green-600 text-white text-nowrap font-bold rounded-2xl px-2 py-1">
+            Log in
+          </DialogTrigger>
+          <DialogContent>
+            <SigninAndRegisterCard startCard="login" />
+          </DialogContent>
+        </Dialog>
+
+        <Dialog>
+          <DialogTrigger className="text-black text-nowrap font-bold rounded-2xl px-2 py-1">
+            Sign up
+          </DialogTrigger>
+          <DialogContent>
+            <SigninAndRegisterCard startCard="signUp" />
+          </DialogContent>
+        </Dialog>
       </div>
     </nav>
   );

@@ -10,26 +10,31 @@ import RegisterForm from "./Register-form";
 import SigninForm from "./Signin-form";
 import { Button } from "../ui/button";
 
-export default function SigninAndRegisterCard() {
-  const [isFlipped, setIsFlipped] = useState<boolean>(false);
+type StartCard = "login" | "signUp";
+export default function SigninAndRegisterCard({
+  startCard = "login",
+}: {
+  startCard: StartCard;
+}) {
+  const [isFlipped, setIsFlipped] = useState<StartCard>(startCard);
 
   return (
-    <Card className="max-w-[600px] text-green-600">
+    <Card className="max-w-[600px] text-green-600 border-none">
       <CardHeader>
-        <CardTitle>{!isFlipped ? "Sign up" : "Log in"}</CardTitle>
+        <CardTitle>{isFlipped === "login" ? "Log in" : "Sign up"}</CardTitle>
       </CardHeader>
       <CardContent>
-        {!isFlipped ? <RegisterForm /> : <SigninForm />}
+        {isFlipped === "login" ? <SigninForm /> : <RegisterForm />}
       </CardContent>
 
       <CardFooter>
         <Button
           variant={"link"}
           onClick={() => {
-            setIsFlipped(!isFlipped);
+            setIsFlipped(isFlipped === "login" ? "signUp" : "login");
           }}
         >
-          {!isFlipped ? "Already a member?" : "Not a member?"}
+          {isFlipped === "login" ? "Not a member?" : "Already a member?"}
         </Button>
       </CardFooter>
     </Card>

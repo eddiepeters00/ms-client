@@ -12,7 +12,7 @@ export default function Bottom() {
           </h3>
         </div>
         <div className="p-10">
-          <SigninAndRegisterCard />
+          <SigninAndRegisterCard startCard="signUp" />
         </div>
       </div>
     </>
