@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -16,8 +15,12 @@ import { z } from "zod";
 import setSessionCookie from "@/lib/server-actions/set-session-cookie";
 import redirectUser from "@/lib/server-actions/redirectUser";
 import fetchData from "@/lib/server-actions/fetch";
+import { useState } from "react";
+import { LoaderIcon } from "lucide-react";
 
 export default function SigninForm() {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const formSchema = z.object({
     username: z.string(),
     password: z.string().min(8),
@@ -34,6 +37,8 @@ export default function SigninForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     //Handle signin
     let success = false;
+    setIsLoading(true);
+
     try {
       const res = await fetchData({
         path: "http://127.0.0.1:3005/api/v1/services/auth",
@@ -51,10 +56,12 @@ export default function SigninForm() {
         success = true;
       }
     } catch (error) {
+      setIsLoading(false);
       console.error(error);
     }
 
     if (success) redirectUser("/dashboard");
+    setIsLoading(false);
   }
 
   return (
@@ -88,8 +95,12 @@ export default function SigninForm() {
             </FormItem>
           )}
         />
-        <Button className="mt-10 bg-green-600 text-white" type="submit">
-          Log in
+        <Button
+          className="mt-10 bg-green-600 text-white"
+          type="submit"
+          disabled={isLoading}
+        >
+          {isLoading ? <LoaderIcon className="animate-spin" /> : "Log in"}
         </Button>
       </form>
     </Form>

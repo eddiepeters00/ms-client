@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -14,10 +13,13 @@ import fetchData from "@/lib/server-actions/fetch";
 import redirectUser from "@/lib/server-actions/redirectUser";
 import setSessionCookie from "@/lib/server-actions/set-session-cookie";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { LoaderIcon } from "lucide-react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 export default function RegisterForm() {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const formSchema = z.object({
     username: z
       .string()
@@ -46,6 +48,7 @@ export default function RegisterForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     //Handle registration
     let success = false;
+    setIsLoading(true);
     try {
       const res = await fetchData({
         path: "http://127.0.0.1:3005/api/v1/services/registration",
@@ -63,8 +66,10 @@ export default function RegisterForm() {
       }
 
       if (success) redirectUser("/dashboard");
+      setIsLoading(false);
     } catch (error) {
       console.error(error);
+      setIsLoading(false);
     }
   }
 
@@ -113,8 +118,12 @@ export default function RegisterForm() {
             </FormItem>
           )}
         />
-        <Button className="mt-10 bg-green-600 text-white" type="submit">
-          Sign up
+        <Button
+          className="mt-10 bg-green-600 text-white"
+          type="submit"
+          disabled={isLoading}
+        >
+          {isLoading ? <LoaderIcon /> : "Sign up"}
         </Button>
       </form>
     </Form>
