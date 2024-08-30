@@ -12,7 +12,7 @@ export default function Page() {
 
   return (
     <>
-      {/** Navbar + Footer = 7rem*/}
+      {/** Navbar = 5rem*/}
       <main className="grid h-[calc(100vh-5rem)] snap-y snap-mandatory overflow-y-scroll no-scrollbar">
         <section
           id="top"

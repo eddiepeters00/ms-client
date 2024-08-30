@@ -1,6 +1,7 @@
 "use server";
 
 type Methods = "put" | "post" | "get" | "delete" | "patch";
+
 export default async function fetchData({
   path,
   headers,
@@ -10,22 +11,39 @@ export default async function fetchData({
 }: {
   cache?: RequestCache;
   path: string;
-  headers?: object;
+  headers?: HeadersInit;
   method: Methods;
-  data: object;
+  data?: object;
 }) {
-  const response = await fetch(path, {
+  const options: RequestInit = {
     cache,
-    method: method,
+    method,
     headers: {
       ...headers,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data),
-  });
+  };
 
-  const res = await response.json();
-  if (res.error) throw new Error(res.data);
-  console.error(res);
-  return res.data;
+  if (method !== "get" && data) {
+    options.body = JSON.stringify(data);
+  }
+
+  try {
+    const response = await fetch(path, options);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const res = await response.json();
+
+    if (res.error) {
+      throw new Error(res.data);
+    }
+
+    return res.data;
+  } catch (error) {
+    console.error("Fetch error:", error);
+    throw error;
+  }
 }
